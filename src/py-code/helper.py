@@ -71,22 +71,20 @@ def ColorsToBinary(input_file, output_file):
 
 
 input_file_path = r"C:\Users\amazi\Downloads\Youtube data.png"
-intermediary_form_path = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\intermediary_form.txt"
-output_file_path = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\colors.txt"
-
-output_output = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\coloredTemp.bin"
-
-output_output_out = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\coloredFinal.png"
+binary_form_path = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\binary_form.bin"
+colored_form_path = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\colors.txt"
+reconstructed_path = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\coloredFinal.png"
 
 
 from main import BinaryToFile, FileToBinary
 
-FileToBinary(input_file_path, intermediary_form_path)
+FileToBinary(input_file_path, binary_form_path)
 
-BinaryToColors(intermediary_form_path, output_file_path)
-ColorsToBinary(output_file_path, output_output)
+BinaryToColors(binary_form_path, colored_form_path)
 
-BinaryToFile(output_output, output_output_out)
+ColorsToBinary(colored_form_path, binary_form_path)
+
+BinaryToFile(binary_form_path, reconstructed_path)
 
 
 
