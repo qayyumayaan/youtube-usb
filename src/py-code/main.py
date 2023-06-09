@@ -1,4 +1,4 @@
-def convert_to_binary(input_file, output_file):
+def FileToBinary(input_file, output_file):
     with open(input_file, 'rb') as file:
         content = file.read()
 
@@ -9,7 +9,7 @@ def convert_to_binary(input_file, output_file):
 
     print("Conversion to binary completed!")
     
-def convert_binary_to_text(input_file, output_file):
+def BinaryToFile(input_file, output_file):
     # Read the binary content from the input file
     with open(input_file, 'r') as file:
         binary_content = file.read()
@@ -34,5 +34,5 @@ input_file_path = r"C:\Users\amazi\Downloads\Digital to YouTube.txt"
 intermediary_form_path = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\intermediary_form.txt"
 output_file_path = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\output.txt"
 
-convert_to_binary(input_file_path, intermediary_form_path)
-convert_binary_to_text(intermediary_form_path, output_file_path)
+FileToBinary(input_file_path, intermediary_form_path)
+BinaryToFile(intermediary_form_path, output_file_path)
