@@ -5,17 +5,32 @@ def BinaryToColors(input_file, output_file):
 
     # Convert binary to colors
     color_content = bytearray()
-    for i in range(0, len(binary_content), 2):
-        bits = binary_content[i:i+2]
-        if bits == '00':
-            color_content.append(98)   # ASCII code for 'b'
-        elif bits == '01':
-            color_content.append(114)  # ASCII code for 'r'
-        elif bits == '10':
-            color_content.append(103)  # ASCII code for 'g'
-        elif bits == '11':
-            color_content.append(121)  # ASCII code for 'y'
-
+    for i in range(0, len(binary_content), 3):
+        bits = binary_content[i:i+3]
+        if bits[0] == '0':
+            if bits[1] == '0':
+                if bits[2] == '0':
+                    print("000")
+                else:
+                    print("001")
+            else:
+                if bits[2] == '0':
+                    print("010")
+                else:
+                    print("011")
+        else:
+            if bits[1] == '1':
+                if bits[2] == '0':
+                    print("100")
+                else:
+                    print("101")
+            else:
+                if bits[2] == '0':
+                    print("110")
+                else:
+                    print("111")
+   
+   
     # Write the color content to the output file
     with open(output_file, 'wb') as file:
         file.write(color_content)
