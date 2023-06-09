@@ -30,9 +30,10 @@ def BinaryToFile(input_file, output_file):
 # input_file_path = input("Input: ")
 # output_file_path = input("Output: ")
 
-input_file_path = r"C:\Users\amazi\Downloads\Digital to YouTube.txt"
-intermediary_form_path = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\intermediary_form.txt"
-output_file_path = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\output.txt"
+input_file_path = r"C:\Users\amazi\Downloads\Youtube data.png"
+# input_file_path = r"C:\Users\amazi\Downloads\Digital to YouTube.txt"
+intermediary_form_path = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\intermediary_form.bin"
+output_file_path = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\output"
 
 FileToBinary(input_file_path, intermediary_form_path)
 BinaryToFile(intermediary_form_path, output_file_path)
