@@ -14,7 +14,7 @@ def Encode(inputFilePath, outputVideoPath):
 
     BinaryToColors(binaryPath, colorsPath)
 
-    ColorsToVideo(colorsPath, outputVideoPath)
+    ColorsToVideo(colorsPath, outputVideoPath)  
     
 
 def Decode(inputVideoPath, outputFilePath):
