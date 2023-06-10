@@ -23,7 +23,7 @@ window.addEventListener('DOMContentLoaded', () => {
     let options = {
       mode: 'text',
       pythonOptions: ['-u'],
-      scriptPath: 'src/py-code',
+      scriptPath: 'py-code',
       args: [inputFilePath, outputFilePath, isEncodeMode],
     };
 

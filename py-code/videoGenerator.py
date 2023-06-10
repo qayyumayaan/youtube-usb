@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from PIL import Image
+# from PIL import Image
 
 # Mapping of characters to GBR colors
 
@@ -26,7 +26,6 @@ def ColorsToVideo(colorsFilePath, outputVideoPath, color_mapping, frameRate, res
         for j in range(numPixelsPerFrame):
             if i + j >= len(colors):
                 break
-
             color = color_mapping[colors[i+j]]
             
             start_row = (j // width) * dataPointSideLengthRes

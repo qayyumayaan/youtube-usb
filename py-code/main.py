@@ -9,7 +9,7 @@ import sys
 
 inputFilePath = sys.argv[1]
 outputVideoPath = sys.argv[2]
-encode = sys.argv[3]    
+encode = bool(sys.argv[3])    
 # print(encode)
 # inputVideoPath = outputVideoPath
 # outputFilePath = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\decoded.png"
@@ -32,8 +32,10 @@ dataPointSideLengthRes = 120
 colorThreshold = 20
 
 if encode == True:
+    print("Encoding mode!")
     Encode(inputFilePath, outputVideoPath, color_mapping, frameRate, resHorizontal, resVertical, dataPointSideLengthRes)
 else:
+    print("Decoding mode!")
     inputVideoPath = inputFilePath
     outputFilePath = outputVideoPath
     Decode(inputVideoPath, outputFilePath, color_mapping, resHorizontal, resVertical, dataPointSideLengthRes, colorThreshold)
