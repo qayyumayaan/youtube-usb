@@ -2,9 +2,8 @@ from encodeAndDecode import Encode, Decode
 import sys
 
 # inputFilePath = r"C:\Users\amazi\Downloads\Youtube data.png"
-# outputVideoPath = r"C:\Users\amazi\Downloads\videoMade.mp4"
-# encode = True
-# inputVideoPath = outputVideoPath
+# outputVideoPath = r"C:\Users\amazi\Downloads\videoMa/de.mp4"
+# encode = False
 # outputFilePath = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\decoded.png"
 
 inputFilePath = sys.argv[1]
