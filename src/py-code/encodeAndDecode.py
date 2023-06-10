@@ -1,5 +1,6 @@
+import os
 from binaryFileConverter import FileToBinary, BinaryToFile
-from helper import BinaryToColors, ColorsToBinary
+from colorBinaryConverter import BinaryToColors, ColorsToBinary
 from videoGenerator import ColorsToVideo
 from videoDecoder import VideoToColors
 
@@ -15,6 +16,10 @@ def Encode(inputFilePath, outputVideoPath):
     BinaryToColors(binaryPath, colorsPath)
 
     ColorsToVideo(colorsPath, outputVideoPath)  
+
+    os.remove(binaryPath)
+    os.remove(colorsPath)
+
     
 
 def Decode(inputVideoPath, outputFilePath):
@@ -24,3 +29,5 @@ def Decode(inputVideoPath, outputFilePath):
     ColorsToBinary(colorsPath, binaryPath)
 
     BinaryToFile(binaryPath, outputFilePath)
+    
+    os.remove(decodedVideoPath)

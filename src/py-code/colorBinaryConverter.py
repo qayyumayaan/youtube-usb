@@ -70,35 +70,30 @@ def ColorsToBinary(input_file, output_file):
     print("Conversion from colors to binary completed!")
 
 
-inputFilePath = r"C:\Users\amazi\Downloads\Youtube data.png"
-
-binaryPath = r"tempInProcess/binary_form.bin"
-colorsPath = r"tempInProcess/colors.txt"
-decodedVideoPath = r"tempInProcess/decodedMess.txt"
-
-outputVideoPath = r"converted.mp4"
+# inputFilePath = r"C:\Users\amazi\Downloads\Youtube data.png"
 
 
-inputVideoPath = r"converted.mp4"
-outputFilePath = r"coloredFinal.png"
+# decodedVideoPath = r"tempInProcess/decodedMess.txt"
+
+# outputVideoPath = r"converted.mp4"
 
 
-from main import BinaryToFile, FileToBinary
-from videoDecoder import VideoToColors
-from videoGenerator import ColorsToVideo
-
-FileToBinary(inputFilePath, binaryPath)
-
-BinaryToColors(binaryPath, colorsPath)
-
-ColorsToVideo(colorsPath, outputVideoPath)
+# inputVideoPath = r"converted.mp4"
+# outputFilePath = r"coloredFinal.png"
 
 
-VideoToColors(inputVideoPath, decodedVideoPath)
+# from main import BinaryToFile, FileToBinary
+# from videoDecoder import VideoToColors
+# from videoGenerator import ColorsToVideo
 
-ColorsToBinary(colorsPath, binaryPath)
 
-BinaryToFile(binaryPath, outputFilePath)
+
+
+# VideoToColors(inputVideoPath, decodedVideoPath)
+
+# ColorsToBinary(colorsPath, binaryPath)
+
+# BinaryToFile(binaryPath, outputFilePath)
 
 
 
