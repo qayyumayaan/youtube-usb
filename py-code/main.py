@@ -3,7 +3,7 @@ import sys
 
 inputFilePath = sys.argv[1]
 outputVideoPath = sys.argv[2]
-encode = bool(sys.argv[3])    
+encode = sys.argv[3]
 
 color_mapping = {
     'D': (50, 50, 50),  # black
@@ -22,7 +22,7 @@ resVertical = 1080
 dataPointSideLengthRes = 120
 colorThreshold = 20
 
-if encode == True:
+if encode.lower() == "true":
     print("Encoding mode!")
     Encode(inputFilePath, outputVideoPath, color_mapping, frameRate, resHorizontal, resVertical, dataPointSideLengthRes)
 else:
