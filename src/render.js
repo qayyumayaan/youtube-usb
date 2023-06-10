@@ -22,6 +22,7 @@ window.addEventListener('DOMContentLoaded', () => {
   runButton.addEventListener('click', () => {
     let options = {
       mode: 'text',
+      pythonPath: 'python', 
       pythonOptions: ['-u'],
       scriptPath: 'py-code',
       args: [inputFilePath, outputFilePath, isEncodeMode],
