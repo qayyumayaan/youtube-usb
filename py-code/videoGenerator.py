@@ -12,12 +12,12 @@ def ColorsToVideo(colorsFilePath, outputVideoPath, color_mapping, frameRate, res
     video = cv2.VideoWriter(outputVideoPath, fourcc, frameRate, (resHorizontal, resVertical))
 
     # Sequence to append at the beginning
-    sequence = "eeeDRGYBPCWeee"
+    # sequence = "eDRGYBPCWe"
 
     with open(colorsFilePath, 'r') as f:
         colors = f.read().replace('\n', '')
 
-    colors = sequence + colors 
+    # colors = sequence + colors 
 
     for i in range(0, len(colors), numPixelsPerFrame):
         frame = np.zeros((resVertical, resHorizontal, 3), dtype=np.uint8)
