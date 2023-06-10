@@ -50,17 +50,12 @@ def videoReader():
 
         for i in range(height):
             for j in range(width):
-                start_row = i * dataPointSideLengthRes
-                start_col = j * dataPointSideLengthRes
+                center_row = i * dataPointSideLengthRes + dataPointSideLengthRes // 2
+                center_col = j * dataPointSideLengthRes + dataPointSideLengthRes // 2
 
-                # To prevent index out of bound, consider the minimum of the end_row/end_col or image dimensions
-                end_row = min(start_row + dataPointSideLengthRes, resVertical)
-                end_col = min(start_col + dataPointSideLengthRes, resHorizontal)
-                
-                # Ensure that we're within the frame boundaries
-                if end_row <= frame.shape[0] and end_col <= frame.shape[1]:
-                    color = tuple(frame[start_row, start_col])
-                    char = inverse_color_mapping.get(color)
+                if center_row < frame.shape[0] and center_col < frame.shape[1]:
+                    color = tuple(frame[center_row, center_col])
+                    char = closestColorMapping(color)
 
                     if char is not None:
                         color_string += char
