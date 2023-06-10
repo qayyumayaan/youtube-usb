@@ -1,4 +1,4 @@
-from main import FileToBinary, BinaryToFile
+from binaryFileConverter import FileToBinary, BinaryToFile
 from helper import BinaryToColors, ColorsToBinary
 from videoGenerator import ColorsToVideo
 from videoDecoder import VideoToColors
