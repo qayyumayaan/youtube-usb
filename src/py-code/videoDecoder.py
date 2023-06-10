@@ -35,11 +35,11 @@ def closestColorMapping(color):
     else:
         return None
 
-def videoReader():
+def videoToColors(inputVideoPath, outputColorPath):
     width = int(resHorizontal / dataPointSideLengthRes)
     height = int(resVertical / dataPointSideLengthRes)
 
-    video = cv2.VideoCapture('converted.mp4')
+    video = cv2.VideoCapture(inputVideoPath)
 
     color_string = ''
 
@@ -63,17 +63,15 @@ def videoReader():
                         print(f"Warning: No character mapping for color {color}")
 
     video.release()
+    
+    with open(outputColorPath, 'w') as file:
+        file.write(color_string)
 
-    return color_string
+    print("Finished decoding the video!")
 
-decodedMessPath = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\decodedMess.txt"
 
-binary_form_path = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\decodedMessbinary.bin"
 
-reconstructed_path = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\decodedMessImage.png"
 
-with open(decodedMessPath, 'w') as file:
-    file.write(videoReader())
     
     
 from helper import ColorsToBinary
