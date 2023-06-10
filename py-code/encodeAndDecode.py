@@ -6,7 +6,6 @@ from videoDecoder import VideoToColors
 
 binaryPath = r"binary_form.bin"
 colorsPath = r"colors.txt"
-# decodedVideoPath = r"tempInProcess/decodedMess.txt"
 
 
 def Encode(inputFilePath, outputVideoPath, color_mapping, frameRate, resHorizontal, resVertical, dataPointSideLengthRes):
@@ -24,7 +23,6 @@ def Encode(inputFilePath, outputVideoPath, color_mapping, frameRate, resHorizont
 
 def Decode(inputVideoPath, outputFilePath, color_mapping, resHorizontal, resVertical, dataPointSideLengthRes, colorThreshold):
     
-    # VideoToColors(inputVideoPath, colorsPath)
     VideoToColors(inputVideoPath, colorsPath, color_mapping, resHorizontal, resVertical, dataPointSideLengthRes, colorThreshold)
 
     ColorsToBinary(colorsPath, binaryPath)

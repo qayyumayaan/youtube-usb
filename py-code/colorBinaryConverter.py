@@ -1,9 +1,7 @@
 def BinaryToColors(input_file, output_file):
-    # Read the binary content from the input file
     with open(input_file, 'r') as file:
         binary_content = file.read()
 
-    # Convert binary to colors
     color_content = bytearray()
     for i in range(0, len(binary_content), 3):
         bits = binary_content[i:i+3]
@@ -31,7 +29,6 @@ def BinaryToColors(input_file, output_file):
                     color_content.append(ord("W"))
    
    
-    # Write the color content to the output file
     with open(output_file, 'wb') as file:
         file.write(color_content)
 
@@ -39,11 +36,9 @@ def BinaryToColors(input_file, output_file):
 
 
 def ColorsToBinary(input_file, output_file):
-    # Read the colored content from the input file
     with open(input_file, 'rb') as file:
         color_content = file.read()
 
-    # Convert colors to binary
     binary_content = ""
     for color in color_content:
         if color == ord("D"):
@@ -63,37 +58,7 @@ def ColorsToBinary(input_file, output_file):
         elif color == ord("W"):
             binary_content += "111"
 
-    # Write the binary content to the output file
     with open(output_file, 'w') as file:
         file.write(binary_content)
 
     print("Conversion from colors to binary completed!")
-
-
-# inputFilePath = r"C:\Users\amazi\Downloads\Youtube data.png"
-
-
-# decodedVideoPath = r"tempInProcess/decodedMess.txt"
-
-# outputVideoPath = r"converted.mp4"
-
-
-# inputVideoPath = r"converted.mp4"
-# outputFilePath = r"coloredFinal.png"
-
-
-# from main import BinaryToFile, FileToBinary
-# from videoDecoder import VideoToColors
-# from videoGenerator import ColorsToVideo
-
-
-
-
-# VideoToColors(inputVideoPath, decodedVideoPath)
-
-# ColorsToBinary(colorsPath, binaryPath)
-
-# BinaryToFile(binaryPath, outputFilePath)
-
-
-

@@ -1,17 +1,9 @@
 from encodeAndDecode import Encode, Decode
 import sys
 
-# inputFilePath = r"C:\Users\amazi\Downloads\Youtube data.png"
-# outputVideoPath = r"C:\Users\amazi\Downloads\videoMa/de.mp4"
-# encode = False
-# outputFilePath = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\decoded.png"
-
 inputFilePath = sys.argv[1]
 outputVideoPath = sys.argv[2]
 encode = bool(sys.argv[3])    
-# print(encode)
-# inputVideoPath = outputVideoPath
-# outputFilePath = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\decoded.png"
 
 color_mapping = {
     'D': (50, 50, 50),  # black

@@ -1,17 +1,11 @@
 import cv2
 import numpy as np
-# from PIL import Image
-
-# Mapping of characters to GBR colors
-
-# colorsFilePath = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\colors.txt"
 
 def ColorsToVideo(colorsFilePath, outputVideoPath, color_mapping, frameRate, resHorizontal, resVertical, dataPointSideLengthRes):  
 
     totalPixels = resHorizontal * resVertical
     numPixelsPerFrame = int(totalPixels / (dataPointSideLengthRes**2))
 
-    # height = int(resVertical / dataPointSideLengthRes)
     width = int(resHorizontal / dataPointSideLengthRes)
 
     fourcc = cv2.VideoWriter_fourcc(*'mp4v')
@@ -40,5 +34,3 @@ def ColorsToVideo(colorsFilePath, outputVideoPath, color_mapping, frameRate, res
     video.release()
 
     print("Finished generating the video!")
-
-# ColorsToVideo(colorsFilePath, outputVideoPath)
