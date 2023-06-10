@@ -9,22 +9,23 @@ colorsPath = r"tempInProcess/colors.txt"
 # decodedVideoPath = r"tempInProcess/decodedMess.txt"
 
 
-def Encode(inputFilePath, outputVideoPath):
+def Encode(inputFilePath, outputVideoPath, color_mapping, frameRate, resHorizontal, resVertical, dataPointSideLengthRes):
         
     FileToBinary(inputFilePath, binaryPath)
 
     BinaryToColors(binaryPath, colorsPath)
 
-    ColorsToVideo(colorsPath, outputVideoPath)  
+    ColorsToVideo(colorsPath, outputVideoPath, color_mapping, frameRate, resHorizontal, resVertical, dataPointSideLengthRes)
 
     os.remove(binaryPath)
     os.remove(colorsPath)
 
     
 
-def Decode(inputVideoPath, outputFilePath):
+def Decode(inputVideoPath, outputFilePath, color_mapping, resHorizontal, resVertical, dataPointSideLengthRes, colorThreshold):
     
-    VideoToColors(inputVideoPath, colorsPath)
+    # VideoToColors(inputVideoPath, colorsPath)
+    VideoToColors(inputVideoPath, colorsPath, color_mapping, resHorizontal, resVertical, dataPointSideLengthRes, colorThreshold)
 
     ColorsToBinary(colorsPath, binaryPath)
 

@@ -1,26 +1,10 @@
 import cv2
 import numpy as np
 
-color_mapping = {
-    'D': (50, 50, 50),  # black
-    'W': (255, 255, 255), # white
-    'R': (0, 0, 255),   # red
-    'G': (0, 255, 0),   # green
-    'B': (255, 0, 0),   # blue
-    'C': (255, 255, 0), # cyan
-    'P': (128, 0, 128), # purple
-    'Y': (0, 255, 255), # yellow
-}
-
-resHorizontal = 1920
-resVertical = 1080
-dataPointSideLengthRes = 120
-colorThreshold = 20
-
 def distance(color1, color2):
     return np.sqrt(sum([(a - b) ** 2 for a, b in zip(color1, color2)]))
 
-def closestColorMapping(color):
+def closestColorMapping(color, colorThreshold, color_mapping):
     min_distance = float('inf')
     closest_color = None
 
@@ -35,7 +19,7 @@ def closestColorMapping(color):
     else:
         return None
 
-def VideoToColors(inputVideoPath, outputColorPath):
+def VideoToColors(inputVideoPath, colorsPath, color_mapping, resHorizontal, resVertical, dataPointSideLengthRes, colorThreshold):
     width = int(resHorizontal / dataPointSideLengthRes)
     height = int(resVertical / dataPointSideLengthRes)
 
@@ -55,7 +39,7 @@ def VideoToColors(inputVideoPath, outputColorPath):
 
                 if center_row < frame.shape[0] and center_col < frame.shape[1]:
                     color = tuple(frame[center_row, center_col])
-                    char = closestColorMapping(color)
+                    char = closestColorMapping(color, colorThreshold, color_mapping)
 
                     if char is not None:
                         color_string += char
@@ -64,7 +48,7 @@ def VideoToColors(inputVideoPath, outputColorPath):
 
     video.release()
     
-    with open(outputColorPath, 'w') as file:
+    with open(colorsPath, 'w') as file:
         file.write(color_string)
 
     print("Finished decoding the video!")
