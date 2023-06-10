@@ -35,7 +35,7 @@ def closestColorMapping(color):
     else:
         return None
 
-def videoToColors(inputVideoPath, outputColorPath):
+def VideoToColors(inputVideoPath, outputColorPath):
     width = int(resHorizontal / dataPointSideLengthRes)
     height = int(resVertical / dataPointSideLengthRes)
 

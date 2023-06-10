@@ -18,9 +18,9 @@ frameRate = 30.0
 resHorizontal = 1920
 resVertical = 1080
 dataPointSideLengthRes = 120
-colorsFilePath = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\colors.txt"
+# colorsFilePath = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\colors.txt"
 
-def videoCreator():
+def ColorsToVideo(colorsFilePath, outputVideoPath):
     totalPixels = resHorizontal * resVertical
     numPixelsPerFrame = int(totalPixels / (dataPointSideLengthRes**2))
 
@@ -28,7 +28,7 @@ def videoCreator():
     width = int(resHorizontal / dataPointSideLengthRes)
 
     fourcc = cv2.VideoWriter_fourcc(*'mp4v')
-    video = cv2.VideoWriter('converted.mp4', fourcc, frameRate, (resHorizontal, resVertical))
+    video = cv2.VideoWriter(outputVideoPath, fourcc, frameRate, (resHorizontal, resVertical))
 
     with open(colorsFilePath, 'r') as f:
         colors = f.read().replace('\n', '')
@@ -55,4 +55,4 @@ def videoCreator():
 
     print("Finished converting!")
 
-videoCreator()
+ColorsToVideo(colorsFilePath, outputVideoPath)
