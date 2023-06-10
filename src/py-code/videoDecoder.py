@@ -1,7 +1,6 @@
 import cv2
 import numpy as np
 
-# Mapping of characters to GBR colors
 color_mapping = {
     'D': (50, 50, 50),  # black
     'W': (255, 255, 255), # white
@@ -13,15 +12,28 @@ color_mapping = {
     'Y': (0, 255, 255), # yellow
 }
 
-# Inverse color mapping
-inverse_color_mapping = {v: k for k, v in color_mapping.items()}
-
 resHorizontal = 1920
 resVertical = 1080
 dataPointSideLengthRes = 120
+colorThreshold = 20
 
-# Inverse color mapping
-inverse_color_mapping = {v: k for k, v in color_mapping.items()}
+def distance(color1, color2):
+    return np.sqrt(sum([(a - b) ** 2 for a, b in zip(color1, color2)]))
+
+def closestColorMapping(color):
+    min_distance = float('inf')
+    closest_color = None
+
+    for char, defined_color in color_mapping.items():
+        dist = distance(color, defined_color)
+        if dist < min_distance:
+            min_distance = dist
+            closest_color = char
+
+    if min_distance <= colorThreshold:
+        return closest_color
+    else:
+        return None
 
 def videoReader():
     width = int(resHorizontal / dataPointSideLengthRes)
@@ -61,6 +73,16 @@ def videoReader():
 
 decodedMessPath = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\decodedMess.txt"
 
+binary_form_path = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\decodedMessbinary.bin"
+
+reconstructed_path = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\decodedMessImage.png"
 
 with open(decodedMessPath, 'w') as file:
     file.write(videoReader())
+    
+    
+from helper import ColorsToBinary
+from main import BinaryToFile
+
+ColorsToBinary(decodedMessPath, binary_form_path)
+BinaryToFile(binary_form_path, reconstructed_path)
