@@ -19,8 +19,8 @@ color_mapping = {
 frameRate = 30.0
 resHorizontal = 1920
 resVertical = 1080
-dataPointSideLengthRes = 120
-colorThreshold = 20
+dataPointSideLengthRes = 15
+colorThreshold = 100
 
 if encode.lower() == "true":
     print("Encoding mode!")
