@@ -8,6 +8,8 @@ import sys
 
 inputFilePath = sys.argv[1]
 outputVideoPath = sys.argv[2]
+encode = sys.argv[3]    
+print(encode)
 inputVideoPath = outputVideoPath
 outputFilePath = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\decoded.png"
 
@@ -28,6 +30,9 @@ resVertical = 1080
 dataPointSideLengthRes = 120
 colorThreshold = 20
 
-Encode(inputFilePath, outputVideoPath, color_mapping, frameRate, resHorizontal, resVertical, dataPointSideLengthRes)
-
-Decode(inputVideoPath, outputFilePath, color_mapping, resHorizontal, resVertical, dataPointSideLengthRes, colorThreshold)
+if encode == True:
+    Encode(inputFilePath, outputVideoPath, color_mapping, frameRate, resHorizontal, resVertical, dataPointSideLengthRes)
+else:
+    inputVideoPath = inputFilePath
+    outputFilePath = outputVideoPath
+    Decode(inputVideoPath, outputFilePath, color_mapping, resHorizontal, resVertical, dataPointSideLengthRes, colorThreshold)

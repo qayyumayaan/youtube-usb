@@ -5,6 +5,8 @@ if (require('electron-squirrel-startup')) {
   app.quit();
 }
 
+let isEncodeMode = true;
+
 const createWindow = () => {
   const mainWindow = new BrowserWindow({
     width: 800,
@@ -34,10 +36,14 @@ app.on('activate', () => {
   }
 });
 
+ipcMain.on('set-encode-mode', (event, mode) => {
+  isEncodeMode = mode;
+});
+
 ipcMain.on('open-file-dialog', (event) => {
   dialog.showOpenDialog({
     properties: ['openFile'],
-    // filters: [{ name: 'Videos', extensions: ['mp4', 'avi', 'mkv'] }],
+    filters: isEncodeMode ? [] : [{ name: 'Videos', extensions: ['mp4'] }],
   }).then((result) => {
     const filePaths = result.filePaths;
     if (filePaths && filePaths.length > 0) {
@@ -51,9 +57,8 @@ ipcMain.on('open-file-dialog', (event) => {
 
 ipcMain.on('save-file-dialog', (event) => {
   dialog.showSaveDialog({
-    title: 'Select Output Video Path',
-    defaultPath: 'output.mp4',
-    filters: [{ name: 'Videos', extensions: ['mp4'] }],
+    defaultPath: isEncodeMode ? 'output.mp4' : 'file',
+    filters: isEncodeMode ? [{ name: 'Videos', extensions: ['mp4'] }] : [],
   }).then((result) => {
     const filePath = result.filePath;
     if (filePath) {
