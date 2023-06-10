@@ -5,15 +5,16 @@ inputFilePath = sys.argv[1]
 outputVideoPath = sys.argv[2]
 encode = sys.argv[3]
 
+m = 255
 color_mapping = {
     'D': (50, 50, 50),  # black
-    'W': (255, 255, 255), # white
-    'R': (0, 0, 255),   # red
-    'G': (0, 255, 0),   # green
-    'B': (255, 0, 0),   # blue
-    'C': (255, 255, 0), # cyan
-    'P': (128, 0, 128), # purple
-    'Y': (0, 255, 255), # yellow
+    'R': (0, 0, m),   # red
+    'G': (0, m, 0),   # green
+    'Y': (0, m, m), # yellow
+    'B': (m, 0, 0),   # blue
+    'P': (m, 0, m), # purple
+    'C': (m, m, 0), # cyan
+    'W': (m, m, m), # white
 }
 
 frameRate = 30.0
