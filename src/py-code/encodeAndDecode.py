@@ -4,8 +4,8 @@ from colorBinaryConverter import BinaryToColors, ColorsToBinary
 from videoGenerator import ColorsToVideo
 from videoDecoder import VideoToColors
 
-binaryPath = r"tempInProcess/binary_form.bin"
-colorsPath = r"tempInProcess/colors.txt"
+binaryPath = r"binary_form.bin"
+colorsPath = r"colors.txt"
 # decodedVideoPath = r"tempInProcess/decodedMess.txt"
 
 

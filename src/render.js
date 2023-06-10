@@ -1,16 +1,13 @@
 const { ipcRenderer } = require('electron');
 const { PythonShell } = require('python-shell');
 
-let options = {
-  mode: 'text',
-  pythonOptions: ['-u'], // get print results in real-time
-};
-
-let pyshell = new PythonShell('src/py-code/main.py', options);
+let inputFilePath = null;
+let outputFilePath = null;
 
 window.addEventListener('DOMContentLoaded', () => {
   const inputButton = document.getElementById('inputButton');
   const outputButton = document.getElementById('outputButton');
+  const runButton = document.getElementById('runButton');
 
   inputButton.addEventListener('click', () => {
     ipcRenderer.send('open-file-dialog');
@@ -20,18 +17,36 @@ window.addEventListener('DOMContentLoaded', () => {
     ipcRenderer.send('save-file-dialog');
   });
 
+  runButton.addEventListener('click', () => {
+    let options = {
+      mode: 'text',
+      pythonOptions: ['-u'], 
+      scriptPath: 'src/py-code',
+      args: [inputFilePath, outputFilePath] 
+    };
+
+    PythonShell.run('main.py', options).then((messages) => {
+      console.log('results: %j', messages);
+    });
+  });
+
   ipcRenderer.on('selected-input-file', (event, path) => {
     console.log('Selected input file:', path);
-    pyshell.send(path);
+    inputFilePath = path;
+    checkFilePaths();
   });
 
   ipcRenderer.on('selected-output-file', (event, path) => {
     console.log('Selected output file:', path);
-    pyshell.send(path);
+    outputFilePath = path;
+    checkFilePaths();
   });
 
-  // Handle messages received from main.py
-  pyshell.on('message', function (message) {
-    console.log(message)
-  });
+  function checkFilePaths() {
+    if (inputFilePath && outputFilePath) {
+      runButton.disabled = false;
+    } else {
+      runButton.disabled = true;
+    }
+  }
 });
