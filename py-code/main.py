@@ -7,7 +7,7 @@ encode = sys.argv[3]
 
 m = 255
 color_mapping = {
-    'D': (50, 50, 50),  # black
+    'D': (m/2, m/2, m/2),  # black
     'R': (0, 0, m),   # red
     'G': (0, m, 0),   # green
     'Y': (0, m, m), # yellow
@@ -21,7 +21,7 @@ frameRate = 30.0
 resHorizontal = 1920
 resVertical = 1080
 dataPointSideLengthRes = 15
-colorThreshold = 100
+colorThreshold = 25
 
 if encode.lower() == "true":
     print("Encoding mode!")
