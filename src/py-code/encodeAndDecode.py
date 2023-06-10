@@ -6,7 +6,7 @@ from videoDecoder import VideoToColors
 
 binaryPath = r"tempInProcess/binary_form.bin"
 colorsPath = r"tempInProcess/colors.txt"
-decodedVideoPath = r"tempInProcess/decodedMess.txt"
+# decodedVideoPath = r"tempInProcess/decodedMess.txt"
 
 
 def Encode(inputFilePath, outputVideoPath):
@@ -24,10 +24,11 @@ def Encode(inputFilePath, outputVideoPath):
 
 def Decode(inputVideoPath, outputFilePath):
     
-    VideoToColors(inputVideoPath, decodedVideoPath)
+    VideoToColors(inputVideoPath, colorsPath)
 
     ColorsToBinary(colorsPath, binaryPath)
 
     BinaryToFile(binaryPath, outputFilePath)
-    
-    os.remove(decodedVideoPath)
+
+    os.remove(binaryPath)  
+    os.remove(colorsPath)
