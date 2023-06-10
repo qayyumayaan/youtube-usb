@@ -29,7 +29,7 @@ numPixelsPerFrame = int(totalPixels / (dataPointSideLengthResolution**2))
 height = int(resVertical / dataPointSideLengthResolution)
 width = int(resHorizontal / dataPointSideLengthResolution)
 
-print(numPixelsPerFrame, height, width)
+# print(numPixelsPerFrame, height, width)
 
 # Initialize video writer
 fourcc = cv2.VideoWriter_fourcc(*'mp4v')
@@ -39,7 +39,7 @@ with open('colors1.txt', 'r') as f:
     colors = f.read().replace('\n', '')
 
 for i in range(0, len(colors), numPixelsPerFrame):
-    frame = np.zeros((1080, 1920, 3), dtype=np.uint8)
+    frame = np.zeros((resVertical, resHorizontal, 3), dtype=np.uint8)
 
     for j in range(numPixelsPerFrame):
         if i + j >= len(colors):
