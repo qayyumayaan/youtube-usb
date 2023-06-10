@@ -75,8 +75,6 @@ inputFilePath = r"C:\Users\amazi\Downloads\Youtube data.png"
 binaryPath = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\binary_form.bin"
 colorsPath = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\colors.txt"
 decodedVideoPath = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\decodedMess.txt"
-binary_form_path = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\decodedMessbinary.bin"
-
 
 outputVideoPath = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\converted.mp4"
 
@@ -100,7 +98,7 @@ VideoToColors(inputVideoPath, decodedVideoPath)
 
 ColorsToBinary(colorsPath, binaryPath)
 
-BinaryToFile(binary_form_path, outputFilePath)
+BinaryToFile(binaryPath, outputFilePath)
 
 
 

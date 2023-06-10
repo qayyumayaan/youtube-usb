@@ -74,8 +74,8 @@ def VideoToColors(inputVideoPath, outputColorPath):
 
     
     
-from helper import ColorsToBinary
-from main import BinaryToFile
+# from helper import ColorsToBinary
+# from main import BinaryToFile
 
-ColorsToBinary(decodedMessPath, binary_form_path)
-BinaryToFile(binary_form_path, reconstructed_path)
+# ColorsToBinary(decodedMessPath, binary_form_path)
+# BinaryToFile(binary_form_path, reconstructed_path)

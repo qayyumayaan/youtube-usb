@@ -53,6 +53,6 @@ def ColorsToVideo(colorsFilePath, outputVideoPath):
 
     video.release()
 
-    print("Finished converting!")
+    print("Finished generating the video!")
 
-ColorsToVideo(colorsFilePath, outputVideoPath)
+# ColorsToVideo(colorsFilePath, outputVideoPath)
