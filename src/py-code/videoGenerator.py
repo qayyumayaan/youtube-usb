@@ -14,30 +14,43 @@ color_mapping = {
     'Y': (0, 255, 255), # yellow
 }
 
-numPixels = 144
-height = 9
-width = 16
+frameRate = 30.0
+resHorizontal = 1920
+resVertical = 1080
+totalPixels = resHorizontal * resVertical
+# totalPixels = 2073600
+
+dataPointSideLengthResolution = 120
+
+
+numPixelsPerFrame = int(totalPixels / (dataPointSideLengthResolution**2))
+# numPixelsPerFrame = 144
+
+height = int(resVertical / dataPointSideLengthResolution)
+width = int(resHorizontal / dataPointSideLengthResolution)
+
+print(numPixelsPerFrame, height, width)
 
 # Initialize video writer
 fourcc = cv2.VideoWriter_fourcc(*'mp4v')
-video = cv2.VideoWriter('converted.mp4', fourcc, 30.0, (1920, 1080))
+video = cv2.VideoWriter('converted.mp4', fourcc, frameRate, (resHorizontal, resVertical))
 
 with open('colors1.txt', 'r') as f:
     colors = f.read().replace('\n', '')
 
-for i in range(0, len(colors), numPixels):
+for i in range(0, len(colors), numPixelsPerFrame):
     frame = np.zeros((1080, 1920, 3), dtype=np.uint8)
 
-    for j in range(numPixels):
+    for j in range(numPixelsPerFrame):
         if i + j >= len(colors):
             break
 
         color = color_mapping[colors[i+j]]
         
-        start_row = (j // height) * 120
-        end_row = start_row + 120
-        start_col = (j % width) * 120
-        end_col = start_col + 120
+        start_row = (j // width) * dataPointSideLengthResolution
+        end_row = start_row + dataPointSideLengthResolution
+        start_col = (j % width) * dataPointSideLengthResolution
+        end_col = start_col + dataPointSideLengthResolution
 
         frame[start_row:end_row, start_col:end_col] = color
 
