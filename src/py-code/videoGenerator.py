@@ -17,46 +17,42 @@ color_mapping = {
 frameRate = 30.0
 resHorizontal = 1920
 resVertical = 1080
-totalPixels = resHorizontal * resVertical
-# totalPixels = 2073600
+dataPointSideLengthRes = 120
+colorsFilePath = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\colors.txt"
 
-dataPointSideLengthResolution = 120
+def videoCreator():
+    totalPixels = resHorizontal * resVertical
+    numPixelsPerFrame = int(totalPixels / (dataPointSideLengthRes**2))
 
+    # height = int(resVertical / dataPointSideLengthRes)
+    width = int(resHorizontal / dataPointSideLengthRes)
 
-numPixelsPerFrame = int(totalPixels / (dataPointSideLengthResolution**2))
-# numPixelsPerFrame = 144
+    fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+    video = cv2.VideoWriter('converted.mp4', fourcc, frameRate, (resHorizontal, resVertical))
 
-height = int(resVertical / dataPointSideLengthResolution)
-width = int(resHorizontal / dataPointSideLengthResolution)
+    with open(colorsFilePath, 'r') as f:
+        colors = f.read().replace('\n', '')
 
-# print(numPixelsPerFrame, height, width)
+    for i in range(0, len(colors), numPixelsPerFrame):
+        frame = np.zeros((resVertical, resHorizontal, 3), dtype=np.uint8)
 
-# Initialize video writer
-fourcc = cv2.VideoWriter_fourcc(*'mp4v')
-video = cv2.VideoWriter('converted.mp4', fourcc, frameRate, (resHorizontal, resVertical))
+        for j in range(numPixelsPerFrame):
+            if i + j >= len(colors):
+                break
 
-with open('colors1.txt', 'r') as f:
-    colors = f.read().replace('\n', '')
+            color = color_mapping[colors[i+j]]
+            
+            start_row = (j // width) * dataPointSideLengthRes
+            end_row = start_row + dataPointSideLengthRes
+            start_col = (j % width) * dataPointSideLengthRes
+            end_col = start_col + dataPointSideLengthRes
 
-for i in range(0, len(colors), numPixelsPerFrame):
-    frame = np.zeros((resVertical, resHorizontal, 3), dtype=np.uint8)
+            frame[start_row:end_row, start_col:end_col] = color
 
-    for j in range(numPixelsPerFrame):
-        if i + j >= len(colors):
-            break
+        video.write(frame)
 
-        color = color_mapping[colors[i+j]]
-        
-        start_row = (j // width) * dataPointSideLengthResolution
-        end_row = start_row + dataPointSideLengthResolution
-        start_col = (j % width) * dataPointSideLengthResolution
-        end_col = start_col + dataPointSideLengthResolution
+    video.release()
 
-        frame[start_row:end_row, start_col:end_col] = color
+    print("Finished converting!")
 
-    video.write(frame)
-
-# Release the video writer
-video.release()
-
-print("Finished converting!")
+videoCreator()
