@@ -70,12 +70,3 @@ def VideoToColors(inputVideoPath, outputColorPath):
     print("Finished decoding the video!")
 
 
-
-
-    
-    
-# from helper import ColorsToBinary
-# from main import BinaryToFile
-
-# ColorsToBinary(decodedMessPath, binary_form_path)
-# BinaryToFile(binary_form_path, reconstructed_path)

@@ -24,16 +24,16 @@ def BinaryToFile(input_file, output_file):
     with open(output_file, 'wb') as file:
         file.write(text_content)
 
-    print("Conversion from binary completed!")
+    print("Conversion from binary to file completed!")
 
 
 # input_file_path = input("Input: ")
 # output_file_path = input("Output: ")
 
-input_file_path = r"C:\Users\amazi\Downloads\Youtube data.png"
-# input_file_path = r"C:\Users\amazi\Downloads\Digital to YouTube.txt"
-intermediary_form_path = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\intermediary_form.bin"
-output_file_path = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\output"
+# input_file_path = r"C:\Users\amazi\Downloads\Youtube data.png"
+# # input_file_path = r"C:\Users\amazi\Downloads\Digital to YouTube.txt"
+# intermediary_form_path = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\intermediary_form.bin"
+# output_file_path = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\output"
 
-FileToBinary(input_file_path, intermediary_form_path)
-BinaryToFile(intermediary_form_path, output_file_path)
+# FileToBinary(input_file_path, intermediary_form_path)
+# BinaryToFile(intermediary_form_path, output_file_path)

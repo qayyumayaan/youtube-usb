@@ -72,15 +72,15 @@ def ColorsToBinary(input_file, output_file):
 
 inputFilePath = r"C:\Users\amazi\Downloads\Youtube data.png"
 
-binaryPath = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\binary_form.bin"
-colorsPath = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\colors.txt"
-decodedVideoPath = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\decodedMess.txt"
+binaryPath = r"tempInProcess/binary_form.bin"
+colorsPath = r"tempInProcess/colors.txt"
+decodedVideoPath = r"tempInProcess/decodedMess.txt"
 
-outputVideoPath = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\converted.mp4"
+outputVideoPath = r"converted.mp4"
 
 
-inputVideoPath = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\converted.mp4"
-outputFilePath = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\coloredFinal.png"
+inputVideoPath = r"converted.mp4"
+outputFilePath = r"coloredFinal.png"
 
 
 from main import BinaryToFile, FileToBinary
