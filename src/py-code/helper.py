@@ -70,21 +70,37 @@ def ColorsToBinary(input_file, output_file):
     print("Conversion from colors to binary completed!")
 
 
-input_file_path = r"C:\Users\amazi\Downloads\Youtube data.png"
-binary_form_path = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\binary_form.bin"
-colored_form_path = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\colors.txt"
-reconstructed_path = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\coloredFinal.png"
+inputFilePath = r"C:\Users\amazi\Downloads\Youtube data.png"
+
+binaryPath = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\binary_form.bin"
+colorsPath = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\colors.txt"
+decodedVideoPath = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\decodedMess.txt"
+binary_form_path = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\decodedMessbinary.bin"
+
+
+outputVideoPath = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\converted.mp4"
+
+
+inputVideoPath = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\converted.mp4"
+outputFilePath = r"C:\Users\amazi\Documents\GitHub\youtube-usb\src\py-code\coloredFinal.png"
 
 
 from main import BinaryToFile, FileToBinary
+from videoDecoder import VideoToColors
+from videoGenerator import ColorsToVideo
 
-FileToBinary(input_file_path, binary_form_path)
+FileToBinary(inputFilePath, binaryPath)
 
-BinaryToColors(binary_form_path, colored_form_path)
+BinaryToColors(binaryPath, colorsPath)
 
-ColorsToBinary(colored_form_path, binary_form_path)
+ColorsToVideo(colorsPath, outputVideoPath)
 
-BinaryToFile(binary_form_path, reconstructed_path)
+
+VideoToColors(inputVideoPath, decodedVideoPath)
+
+ColorsToBinary(colorsPath, binaryPath)
+
+BinaryToFile(binary_form_path, outputFilePath)
 
 
 
