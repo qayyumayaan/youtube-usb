@@ -3,16 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <title>Hello World!</title>
-    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="styles.css" />
     <script defer src="render.js"></script>
   </head>
-  <body>
-    <h1>💖 Hello World!</h1>
-    <p>Upload your file to convert it to and from video form. You must remember the file extension for this to work!</p>
-    <button id="inputButton">Select Input File</button>
-    <button id="outputButton">Select Output File</button>
-    <button id="runButton" disabled>Run</button>
-    <button id="modeButton">Encode Mode</button>
-    <input id="magicNumber" placeholder="Enter the magic number:" />
+  <body class="font-sans mx-auto max-w-screen-sm p-8">
+    <h1 class="text-4xl mb-4">💖 Hello World!</h1>
+    <p class="mb-4">
+      Upload your file to convert it to and from video form. You must remember
+      the file extension for this to work!
+    </p>
+    <button id="inputButton" class="px-4 py-2 bg-blue-500 text-white rounded-md">
+      Select Input File
+    </button>
+    <button id="outputButton" class="px-4 py-2 bg-blue-500 text-white rounded-md">
+      Select Output File
+    </button>
+    <button
+      id="runButton"
+      class="px-4 py-2 bg-gray-500 text-white rounded-md"
+      disabled
+    >
+      Run
+    </button>
+    <button id="modeButton" class="px-4 py-2 bg-blue-500 text-white rounded-md">
+      Encode Mode
+    </button>
+    <input
+      id="magicNumber"
+      class="hidden"
+      placeholder="Enter the magic number:"
+    />
   </body>
 </html>
