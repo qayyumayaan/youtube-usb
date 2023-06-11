@@ -6,7 +6,7 @@ def BinaryToColors(input_file, output_file):
     while len(binary_content) % 3 != 0:
         binary_content += '0'
         padding += 1
-    print("Padding: " + str(padding))
+    print("Magic number: " + str(padding))
 
     color_content = bytearray()
     for i in range(0, len(binary_content), 3):

@@ -32,7 +32,13 @@ window.addEventListener('DOMContentLoaded', () => {
     };
 
     PythonShell.run('main.py', options).then((messages) => {
-      console.log('results: %j', messages);
+      const magicNumberOutput = document.createElement('p');
+      magicNumberOutput.textContent = messages[2]; 
+      document.body.appendChild(magicNumberOutput);
+      const disclaimerForMagicNumber = document.createElement('p');
+      disclaimerForMagicNumber.textContent = "Store this number or you won't be able to decode it!"; 
+      document.body.appendChild(disclaimerForMagicNumber);
+      console.log('results: %j', messages);    
     });
   });
 
