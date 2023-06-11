@@ -31,15 +31,25 @@ window.addEventListener('DOMContentLoaded', () => {
       args: [inputFilePath, outputFilePath, isEncodeMode, magicNumberInput.value],
     };
 
+    const resultContainer = document.getElementById('resultContainer'); 
     PythonShell.run('main.py', options).then((messages) => {
       const magicNumberOutput = document.createElement('p');
       magicNumberOutput.textContent = messages[2]; 
-      document.body.appendChild(magicNumberOutput);
+      magicNumberOutput.classList.add('hidden'); 
+      resultContainer.appendChild(magicNumberOutput);
+    
       const disclaimerForMagicNumber = document.createElement('p');
       disclaimerForMagicNumber.textContent = "Store this number or you won't be able to decode it!"; 
-      document.body.appendChild(disclaimerForMagicNumber);
-      console.log('results: %j', messages);    
-    });
+      disclaimerForMagicNumber.classList.add('hidden'); 
+      resultContainer.appendChild(disclaimerForMagicNumber);
+      
+      console.log('results: %j', messages);
+      
+      if (magicNumberOutput.textContent !== '') {
+        magicNumberOutput.classList.remove('hidden');
+        disclaimerForMagicNumber.classList.remove('hidden');
+      }
+    });    
   });
 
   modeButton.addEventListener('click', () => {
