@@ -25,45 +25,46 @@ window.addEventListener('DOMContentLoaded', () => {
   runButton.addEventListener('click', () => {
     let options = {
       mode: 'text',
-      pythonPath: 'python', 
+      pythonPath: 'python',
       pythonOptions: ['-u'],
       scriptPath: 'py-code',
       args: [inputFilePath, outputFilePath, isEncodeMode, magicNumberInput.value],
     };
 
-    const resultContainer = document.getElementById('resultContainer'); 
+    const resultContainer = document.getElementById('resultContainer');
     PythonShell.run('main.py', options).then((messages) => {
       const magicNumberOutput = document.createElement('p');
-      magicNumberOutput.textContent = messages[2]; 
-      magicNumberOutput.classList.add('hidden'); 
+      magicNumberOutput.textContent = messages[2];
+      magicNumberOutput.classList.add('hidden');
       resultContainer.appendChild(magicNumberOutput);
-    
+
       const disclaimerForMagicNumber = document.createElement('p');
-      disclaimerForMagicNumber.textContent = "Store this number or you won't be able to decode it!"; 
-      disclaimerForMagicNumber.classList.add('hidden'); 
+      disclaimerForMagicNumber.textContent = "Store this number or you won't be able to decode it!";
+      disclaimerForMagicNumber.classList.add('hidden');
       resultContainer.appendChild(disclaimerForMagicNumber);
-      
+
       console.log('results: %j', messages);
-      
+
       if (magicNumberOutput.textContent !== '') {
         magicNumberOutput.classList.remove('hidden');
         disclaimerForMagicNumber.classList.remove('hidden');
       }
-    });    
+    });
   });
 
   modeButton.addEventListener('click', () => {
+    resetFilePaths(); // Call the function to clear the file paths
     isEncodeMode = !isEncodeMode;
     modeButton.textContent = isEncodeMode ? 'Encode Mode' : 'Decode Mode';
     ipcRenderer.send('set-encode-mode', isEncodeMode);
     console.log(isEncodeMode);
-  
+
     if (!isEncodeMode) {
       magicNumberInput.style.display = 'none';
     } else {
       magicNumberInput.style.display = 'block';
     }
-  
+
     checkFilePaths();
   });
 
@@ -80,9 +81,8 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 
   function checkFilePaths() {
-    const magicNumberInput = document.getElementById('magicNumber');
     const runButton = document.getElementById('runButton');
-  
+
     if (isEncodeMode) {
       if (inputFilePath && outputFilePath) {
         runButton.disabled = false;
@@ -99,5 +99,9 @@ window.addEventListener('DOMContentLoaded', () => {
       magicNumberInput.style.display = 'block';
     }
   }
-  
+
+  function resetFilePaths() {
+    inputFilePath = null;
+    outputFilePath = null;
+  }
 });

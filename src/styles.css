@@ -32,7 +32,6 @@ body {
   justify-content: center; 
 }
 
-
 .button-group {
   display: flex;
   justify-content: center;
@@ -65,6 +64,11 @@ button {
 
 button:hover {
   background-color: #3b82f6;
+}
+
+button:disabled {
+  opacity: 0.5; 
+  cursor: not-allowed;
 }
 
 input {
