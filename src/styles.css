@@ -12,29 +12,36 @@ body::before {
   z-index: -1;
 }
 
-.body {
-  font-family: "Arial", sans-serif; /* Change the font family to your preferred choice */
-  margin: auto;
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f3f4f6;
+}
+
+.container {
   max-width: 38rem;
   padding: 2rem;
-  text-align: center; /* Center the text */
+  text-align: center;
 }
 
 .button-group {
   display: flex;
-  flex-direction: row; /* Change the flex-direction to row */
-  justify-content: center; /* Center the buttons horizontally */
-  margin-top: 1rem; /* Add margin to separate the buttons from the text */
+  justify-content: center;
+  margin-top: 1rem;
 }
 
 h1 {
   color: #fff;
-  text-align: center; /* Center the header text */
+  text-align: center; 
 }
 
 p {
   color: #fff;
-  text-align: center; /* Center the paragraph text */
+  text-align: center;
 }
 
 button {
@@ -45,7 +52,7 @@ button {
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin: 0 0.5rem; /* Add margin between the buttons */
+  margin: 0 0.5rem;
 }
 
 button:hover {
