@@ -10,6 +10,9 @@ window.addEventListener('DOMContentLoaded', () => {
   const outputButton = document.getElementById('outputButton');
   const runButton = document.getElementById('runButton');
   const modeButton = document.getElementById('modeButton');
+  let magicNumberInput = document.getElementById('magicNumber');
+
+  magicNumberInput.addEventListener('input', checkFilePaths);
 
   inputButton.addEventListener('click', () => {
     ipcRenderer.send('open-file-dialog');
@@ -25,7 +28,7 @@ window.addEventListener('DOMContentLoaded', () => {
       pythonPath: 'python', 
       pythonOptions: ['-u'],
       scriptPath: 'py-code',
-      args: [inputFilePath, outputFilePath, isEncodeMode],
+      args: [inputFilePath, outputFilePath, isEncodeMode, magicNumberInput.value],
     };
 
     PythonShell.run('main.py', options).then((messages) => {
@@ -37,7 +40,15 @@ window.addEventListener('DOMContentLoaded', () => {
     isEncodeMode = !isEncodeMode;
     modeButton.textContent = isEncodeMode ? 'Encode Mode' : 'Decode Mode';
     ipcRenderer.send('set-encode-mode', isEncodeMode);
-    console.log(isEncodeMode)
+    console.log(isEncodeMode);
+  
+    if (!isEncodeMode) {
+      magicNumberInput.style.display = 'none';
+    } else {
+      magicNumberInput.style.display = 'block';
+    }
+  
+    checkFilePaths();
   });
 
   ipcRenderer.on('selected-input-file', (event, path) => {
@@ -59,4 +70,5 @@ window.addEventListener('DOMContentLoaded', () => {
       runButton.disabled = true;
     }
   }
+  
 });

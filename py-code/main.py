@@ -4,6 +4,7 @@ import sys
 inputFilePath = sys.argv[1]
 outputVideoPath = sys.argv[2]
 encode = sys.argv[3]
+magicNumber = sys.argv[4]
 
 m = 255
 color_mapping = {
@@ -31,4 +32,4 @@ else:
     print("Decoding mode!")
     inputVideoPath = inputFilePath
     outputFilePath = outputVideoPath
-    Decode(inputVideoPath, outputFilePath, color_mapping, resHorizontal, resVertical, dataPointSideLengthRes, colorThreshold)
+    Decode(inputVideoPath, outputFilePath, color_mapping, resHorizontal, resVertical, dataPointSideLengthRes, colorThreshold, magicNumber)

@@ -21,11 +21,11 @@ def Encode(inputFilePath, outputVideoPath, color_mapping, frameRate, resHorizont
 
     
 
-def Decode(inputVideoPath, outputFilePath, color_mapping, resHorizontal, resVertical, dataPointSideLengthRes, colorThreshold):
+def Decode(inputVideoPath, outputFilePath, color_mapping, resHorizontal, resVertical, dataPointSideLengthRes, colorThreshold, magicNumber):
     
     VideoToColors(inputVideoPath, colorsPath, color_mapping, resHorizontal, resVertical, dataPointSideLengthRes, colorThreshold)
 
-    ColorsToBinary(colorsPath, binaryPath)
+    ColorsToBinary(colorsPath, binaryPath, magicNumber)
 
     BinaryToFile(binaryPath, outputFilePath)
 

@@ -1,6 +1,12 @@
 def BinaryToColors(input_file, output_file):
     with open(input_file, 'r') as file:
         binary_content = file.read()
+        
+    padding = 0
+    while len(binary_content) % 3 != 0:
+        binary_content += '0'
+        padding += 1
+    print("Padding: " + str(padding))
 
     color_content = bytearray()
     for i in range(0, len(binary_content), 3):
@@ -35,7 +41,7 @@ def BinaryToColors(input_file, output_file):
     print("Conversion from binary to colors completed!")
 
 
-def ColorsToBinary(input_file, output_file):
+def ColorsToBinary(input_file, output_file, magicNumber):
     with open(input_file, 'rb') as file:
         color_content = file.read()
 
@@ -57,6 +63,9 @@ def ColorsToBinary(input_file, output_file):
             binary_content += "110"
         elif color == ord("W"):
             binary_content += "111"
+    
+    # Remove the padding bits
+    binary_content = binary_content[:-magicNumber]
 
     with open(output_file, 'w') as file:
         file.write(binary_content)
