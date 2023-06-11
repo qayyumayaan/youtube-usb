@@ -103,5 +103,6 @@ window.addEventListener('DOMContentLoaded', () => {
   function resetFilePaths() {
     inputFilePath = null;
     outputFilePath = null;
+    magicNumberInput.value = ''; 
   }
 });
