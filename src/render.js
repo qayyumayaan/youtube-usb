@@ -64,10 +64,23 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 
   function checkFilePaths() {
-    if (inputFilePath && outputFilePath) {
-      runButton.disabled = false;
+    const magicNumberInput = document.getElementById('magicNumber');
+    const runButton = document.getElementById('runButton');
+  
+    if (isEncodeMode) {
+      if (inputFilePath && outputFilePath) {
+        runButton.disabled = false;
+      } else {
+        runButton.disabled = true;
+      }
+      magicNumberInput.style.display = 'none';
     } else {
-      runButton.disabled = true;
+      if (inputFilePath && outputFilePath && magicNumberInput.value !== '') {
+        runButton.disabled = false;
+      } else {
+        runButton.disabled = true;
+      }
+      magicNumberInput.style.display = 'block';
     }
   }
   
